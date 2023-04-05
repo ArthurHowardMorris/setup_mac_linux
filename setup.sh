@@ -23,6 +23,8 @@ then
     then
         echo "brew not found, installing brew"
         /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+        (echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" ') >> $HOME/.profile
+        eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
     else
         echo  "brew found"
     fi
