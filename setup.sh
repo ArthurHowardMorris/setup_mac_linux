@@ -39,20 +39,20 @@ brew update
 echo "install formulae from formulae.txt"
 xargs brew  install < formulae.txt
 
-# function to install packages on linux or mac
-# install packages
-# PACKAGES=("git" "make"  "pandoc" "tree" "auto-jump" "latex-diff" "tmux" "zsh-vi-mode")
-# echo "installing packages"
+if [  "$(uname)" == "Darwin" ]
+then
+    echo "installing mac apps and casks"
+    brew install --cask expressvpn obsidian font-source-code-pro powershell git-credential-manager-core rar google-chrome rectangle-pro iterm2 superkey mactex visual-studio-code miniconda
+    # set up a working conda
+    conda init "$(basename "${SHELL}")"
+    conda create --name 3point10 python=3.10 anaconda pyarrow pip ipykernel notebook  nb_conda_kernels 
+    conda activate 3point10
+    conda install -c conda-forge jupyter_contrib_nbextensions rise plotnine stata_kernel 
+    python -m ipykernel install --user --name 3point10
+    jupyter contrib nbextension install --user
+    #python -m stata_kernel.install
+    pip install wrds
+    pip install mapply
+fi
+# TODO: set  this up so it works alittle more of at all on both:
 #
-# if [  "$(uname)" == "Darwin" ]
-# then 
-#     brew install ${PACKAGES[@]}
-# elif [ "$(uname)" == "Linux" ]
-# then 
-#     apt-get install ${PACKAGES[@]}
-# else
-#     echo "unsupported operating system"
-#     exit 1
-# fi
-#
-# # CASKS=("obsidian"
