@@ -1,0 +1,10 @@
+ghostscript
+neovim
+pandoc
+tldr
+tmux
+tree
+wget
+zsh-autosuggestions
+zsh-syntax-highlighting
+zsh-vi-mode
