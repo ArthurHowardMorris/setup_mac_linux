@@ -1,4 +1,5 @@
 ghostscript
+gh
 neovim
 pandoc
 tldr
