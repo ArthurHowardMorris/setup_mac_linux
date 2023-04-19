@@ -75,7 +75,12 @@ yes '' | ssh-keygen -t rsa -b 4096 -C "53531149+ArthurHowardMorris@users.noreply
 eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_rsa
 # https://ostechnix.com/how-to-use-pbcopy-and-pbpaste-commands-on-linux/
-cat ~/.ssh/id_rsa.pub | xclip -selection c
+if [  "$(uname)" == "Darwin" ]
+then
+    cat ~/.ssh/id_rsa.pub | pbcopy -selection c
+elif [ "$(uname)" == "Linux" ]
+    cat ~/.ssh/id_rsa.pub | xclip -selection c
+fi
 read -p "Public key is now in the system clipboard. Go to https://github.com/settings/keys to add this to github. Ready to continue (y/n)?" choice
 case "$choice" in 
   y|Y ) echo "yes";;
@@ -100,3 +105,4 @@ jupyter contrib nbextension install --user
 #python -m stata_kernel.install
 pip install wrds
 pip install mapply
+
