@@ -1,4 +1,7 @@
 expressvpn
+tidal
+cyberduck
+anki
 obsidian
 font-source-code-pro
 powershell
