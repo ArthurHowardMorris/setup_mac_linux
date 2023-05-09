@@ -1,0 +1,15 @@
+expressvpn
+obsidian
+font-source-code-pro
+powershell
+git-credential-manager-core
+rar
+google-chrome
+rectangle-pro
+iterm2
+superkey
+mactex
+visual-studio-code
+miniconda
+1password
+

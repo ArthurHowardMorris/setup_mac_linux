@@ -1,5 +1,8 @@
-ghostscript
+autojump
+bfg
+exiftool
 gh
+ghostscript
 neovim
 pandoc
 tldr
