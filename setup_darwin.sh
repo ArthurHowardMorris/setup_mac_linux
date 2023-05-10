@@ -9,14 +9,21 @@ else
     exit 1
 fi
 
+## Step 1: setup oh-my-zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+# at this point the .zshrc is default, once git is set we will move to the one in the dotfiles
+
 ## Step 1 install `homebrew` if needed and check for updates
 if ! command -v brew &> /dev/null
 then 
     echo "brew not found, installing brew"
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> $HOME/.zprofile
+    eval "$(/opt/homebrew/bin/brew shellenv)"
 else
     echo "brew found"
 fi
+
 echo "check for updates" 
 brew update
 
