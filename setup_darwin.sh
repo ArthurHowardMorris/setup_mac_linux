@@ -38,18 +38,25 @@ xargs brew install --cask < casks.txt
 ## Step 4 set up an ssh key for the main github account, prompt to apply and
 #then configure with main account credentials
 
-# make an ssh key for the main github account, without passphrase, in the default location
-yes '' | ssh-keygen -t rsa -b 4096 -C "53531149+ArthurHowardMorris@users.noreply.github.com" -N ''
-eval "$(ssh-agent -s)"
-ssh-add ~/.ssh/id_rsa
-cat ~/.ssh/id_rsa.pub | pbcopy -selection c
-# prompt to place this in github
-read -p "Public key is now in the system clipboard. Go to https://github.com/settings/keys to add this to github. Ready to continue (y/n)?" choice
-case "$choice" in 
-  y|Y ) echo "yes";;
-  n|N ) echo "no";;
-  * ) echo "invalid";;
-esac
+# check for the keys:
+if [ -f "~/.ssh/id_rsa" ]
+then 
+	echo "ssh key already exists"
+else
+	# make an ssh key for the main github account, without passphrase, in the default location
+	echo "ssh key not found creating on now"
+	yes '' | ssh-keygen -t rsa -b 4096 -C "53531149+ArthurHowardMorris@users.noreply.github.com" -N ''
+	eval "$(ssh-agent -s)"
+	ssh-add ~/.ssh/id_rsa
+	cat ~/.ssh/id_rsa.pub | pbcopy -selection c
+	# prompt to place this in github
+	read -p "Public key is now in the system clipboard. Go to https://github.com/settings/keys to add this to github. Ready to continue (y/n)?" choice
+	case "$choice" in 
+	  y|Y ) echo "yes";;
+	  n|N ) echo "no";;
+	  * ) echo "invalid";;
+	esac
+fi
 # set the git config
 git config --global user.email  "53531149+ArthurHowardMorris@users.noreply.github.com"
 git config --global user.name "ArthurHowardMorris"
