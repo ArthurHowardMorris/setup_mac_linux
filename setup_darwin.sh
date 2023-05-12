@@ -34,17 +34,17 @@ xargs brew  install < formulae.txt
 ## Step 3 install all the casks from casks.txt
 echo "install casks from casks.txt"
 xargs brew install --cask < casks.txt
-
+eval "$(/usr/libexec/path_helper)"
 ## Step 4 set up an ssh key for the main github account, prompt to apply and
 #then configure with main account credentials
 
 # check for the keys:
-if [ -f "~/.ssh/id_rsa" ]
+if [ -e "$HOME/.ssh/id_rsa" ]
 then 
 	echo "ssh key already exists"
 else
 	# make an ssh key for the main github account, without passphrase, in the default location
-	echo "ssh key not found creating on now"
+	echo "ssh key not found creating one now"
 	yes '' | ssh-keygen -t rsa -b 4096 -C "53531149+ArthurHowardMorris@users.noreply.github.com" -N ''
 	eval "$(ssh-agent -s)"
 	ssh-add ~/.ssh/id_rsa
