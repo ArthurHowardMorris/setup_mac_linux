@@ -1,6 +1,6 @@
 #!/bin/bash
 echo "first setting up an anaconda stack with 3.10"
-
+conda init zsh
 conda create --name 3point10 python=3.10 anaconda pyarrow pip ipykernel notebook  nb_conda_kernels rise
 conda activate 3point10
 conda install -c conda-forge jupyter_contrib_nbextensions plotnine stata_kernel 

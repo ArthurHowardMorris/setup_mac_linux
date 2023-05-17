@@ -10,6 +10,7 @@ else
 fi
 
 ## Step 1: setup oh-my-zsh
+
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 # at this point the .zshrc is default, once git is set we will move to the one in the dotfiles
 
@@ -31,7 +32,7 @@ brew update
 echo "install formulae from formulae.txt"
 xargs brew  install < formulae.txt
 
-## Step 3 install all the casks from casks.txt
+## Step 3 install all the casks from casks.txt	
 echo "install casks from casks.txt"
 xargs brew install --cask < casks.txt
 eval "$(/usr/libexec/path_helper)"
@@ -62,7 +63,8 @@ git config --global user.email  "53531149+ArthurHowardMorris@users.noreply.githu
 git config --global user.name "ArthurHowardMorris"
 
 ## Step 5 use conda to set up the anaconda stack (at py 11 now)
-conda init "$(basename "$SHELL")"
+# conda init "$(basename "$SHELL")"
+conda init zsh
 echo "****************************************"
 echo "* reloading zsh so we can use conda    *"
 echo "* now check the install to this point  *"
