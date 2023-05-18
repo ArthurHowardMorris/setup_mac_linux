@@ -14,4 +14,7 @@ mactex
 visual-studio-code
 miniconda
 1password
+font-open-dyslexic-nerd-font
+font-monofur-nerd-font
+
 

@@ -27,16 +27,19 @@ fi
 
 echo "check for updates" 
 brew update
+## Step 2 tap for the fonts
+brew tap homebrew/cask-fonts
 
-## Step 2 install all the formulae in formulae.txt
+## Step 3 install all the formulae in formulae.txt
 echo "install formulae from formulae.txt"
 xargs brew  install < formulae.txt
 
-## Step 3 install all the casks from casks.txt	
+## Step 4 install all the casks from casks.txt	
 echo "install casks from casks.txt"
 xargs brew install --cask < casks.txt
 eval "$(/usr/libexec/path_helper)"
-## Step 4 set up an ssh key for the main github account, prompt to apply and
+
+## Step 5 set up an ssh key for the main github account, prompt to apply and
 #then configure with main account credentials
 
 # check for the keys:
@@ -62,7 +65,7 @@ fi
 git config --global user.email  "53531149+ArthurHowardMorris@users.noreply.github.com"
 git config --global user.name "ArthurHowardMorris"
 
-## Step 5 use conda to set up the anaconda stack (at py 11 now)
+## Step 6 use conda to set up the anaconda stack (at py 11 now)
 # conda init "$(basename "$SHELL")"
 conda init zsh
 echo "****************************************"
