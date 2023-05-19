@@ -75,7 +75,25 @@ rm -rf ~/.config/nvim
 rm -rf ~/.local/share/nvim
 # then pull in the nvchad
 git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1 && nvim
+# TODO: add a step to suck in your own configs from a github repo
 
+## Step 8: setup an overleaf foler
+FOLDER="$HOME/Overleaf/"
+if [ -d "$FOLDER" ]; then
+  echo "$FOLDER exists"
+else 
+  echo "missing $FOLDER make it now"
+  mkdir $FOLDER
+fi
+## Step 8: populate with the projects
+# TODO: make this a little more elegant, like with a list
+if [ ! -d "$HOME/Overleaf/DFM_draft/" ]; then
+  git clone git@github.com:ArthurHowardMorris/DFM_draft.git 
+fi
+if [ ! -d "$HOME/Overleaf/ADGM_BankComp_V2/" ]; then
+  git clone git@github.com:ArthurHowardMorris/ADGM_BankComp_V2.git
+fi
+  
 echo "****************************************"
 echo "* reloading zsh so we can use conda    *"
 echo "* now check the install to this point  *"
