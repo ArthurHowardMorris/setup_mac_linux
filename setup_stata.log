@@ -1,0 +1,206 @@
+
+  ___  ____  ____  ____  ____ (R)
+ /__    /   ____/   /   ____/
+___/   /   /___/   /   /___/   16.1   Copyright 1985-2019 StataCorp LLC
+  Statistics/Data analysis            StataCorp
+                                      4905 Lakeway Drive
+     MP - Parallel Edition            College Station, Texas 77845 USA
+                                      800-STATA-PC        https://www.stata.com
+                                      979-696-4600        stata@stata.com
+                                      979-696-4601 (fax)
+
+Stata license: Single-user 6-core  perpetual
+Serial number: 501606243595
+  Licensed to: Cahal Caomh
+               Documenters Workbench
+
+Notes:
+      1. Stata is running in batch mode.
+      2. Unicode is supported; see help unicode_advice.
+      3. More than 2 billion observations are allowed; see help obs_advice.
+      4. Maximum number of variables is set to 5,000; see help set_maxvar.
+
+. * run this as follows:
+
+. * `stata-mp < setup_stata.do > setup_stata.log` add & to run in background
+
+. * this file simply installs from ssc as needed. more functionality to come
+
+. 
+. * reghdfe v6
+
+. * Install ftools
+
+. cap ado uninstall ftools
+
+. net install ftools, from("https://raw.githubusercontent.com/sergiocorreia/fto
+> ols/master/src/")
+checking ftools consistency and verifying not already installed...
+installing into /Users/cahalcaomh/Library/Application Support/Stata/ado/plus/..
+> .
+installation complete.
+
+. * Install reghdfe 6.x
+
+. cap ado uninstall reghdfe
+
+. net install reghdfe, from("https://raw.githubusercontent.com/sergiocorreia/re
+> ghdfe/master/src/")
+checking reghdfe consistency and verifying not already installed...
+installing into /Users/cahalcaomh/Library/Application Support/Stata/ado/plus/..
+> .
+installation complete.
+
+. cap ado uninstall ivreghdfe
+
+. cap ssc install ivreg2 // Install ivreg2, the core package
+
+. net install ivreghdfe, from("https://raw.githubusercontent.com/sergiocorreia/
+> ivreghdfe/master/src/")
+checking ivreghdfe consistency and verifying not already installed...
+installing into /Users/cahalcaomh/Library/Application Support/Stata/ado/plus/..
+> .
+installation complete.
+
+. * Install ppmlhdfe
+
+. cap ado uninstall ppmlhdfe
+
+. net install ppmlhdfe, from("https://raw.githubusercontent.com/sergiocorreia/p
+> pmlhdfe/master/src/")
+checking ppmlhdfe consistency and verifying not already installed...
+installing into /Users/cahalcaomh/Library/Application Support/Stata/ado/plus/..
+> .
+installation complete.
+
+. * Create compiled files
+
+. ftools, compile
+(compiling lftools.mlib for Stata 16.1)
+(library saved in /Users/cahalcaomh/Documents/Stata/ado/personal/l/lftools.mlib
+> )
+
+. // reghdfe, compile
+/ is not a valid command name
+r(199);
+
+. 
+. * Check versions
+
+. ppmlhdfe, version
+/Users/cahalcaomh/Library/Application Support/Stata/ado/plus/p/ppmlhdfe.ado
+*! version 2.3.0 25feb2021
+*! Authors: Sergio Correia, Paulo Guimarães, Thomas Zylkin
+*! URL: https://github.com/sergiocorreia/ppmlhdfe
+
+Required packages installed?
+- ftools   yes; version: 2.49.0 06may2022
+- reghdfe  yes; version: 6.12.2 02Nov2021
+
+. 
+. * stuff from benjann
+
+. * https://repec.sowi.unibe.ch/stata/index.html
+
+. ssc install estout
+checking estout consistency and verifying not already installed...
+all files already exist and are up to date.
+
+. ssc install coefplot
+checking coefplot consistency and verifying not already installed...
+all files already exist and are up to date.
+
+. ssc install texdoc
+checking texdoc consistency and verifying not already installed...
+all files already exist and are up to date.
+
+. ssc install erepost
+checking erepost consistency and verifying not already installed...
+all files already exist and are up to date.
+
+. * graph styles from grstyle
+
+. net install grstyle, replace from(https://raw.githubusercontent.com/benjann/g
+> rstyle/master/)
+checking grstyle consistency and verifying not already installed...
+all files already exist and are up to date.
+
+. net install palettes, replace from(https://raw.githubusercontent.com/benjann/
+> palettes/master/)
+checking palettes consistency and verifying not already installed...
+all files already exist and are up to date.
+
+. net install colrspace, replace from(https://raw.githubusercontent.com/benjann
+> /colrspace/master/)
+checking colrspace consistency and verifying not already installed...
+all files already exist and are up to date.
+
+. 
+. 
+. ssc install distinct
+checking distinct consistency and verifying not already installed...
+all files already exist and are up to date.
+
+. net install cowsay, from(https://raw.githubusercontent.com/mdroste/stata-cows
+> ay/master/)
+checking cowsay consistency and verifying not already installed...
+all files already exist and are up to date.
+
+. 
+. ado update, update all
+(note: ado update updates community-contributed files; type -update- to check
+       for updates to official Stata)
+
+Checking status of installed packages...
+
+    [1] grstyle at http://fmwww.bc.edu/repec/bocode/g:
+        installed package is up to date
+
+    [2] palettes at http://fmwww.bc.edu/repec/bocode/p:
+        installed package is up to date
+
+    [3] colrspace at http://fmwww.bc.edu/repec/bocode/c:
+        installed package is up to date
+
+    [4] colrspace at
+        https://raw.githubusercontent.com/benjann/colrspace/master:
+        installed package is up to date
+
+    [5] distinct at http://fmwww.bc.edu/repec/bocode/d:
+        installed package is up to date
+
+    [6] estout at http://fmwww.bc.edu/repec/bocode/e:
+        installed package is up to date
+
+    [7] coefplot at http://fmwww.bc.edu/repec/bocode/c:
+        installed package is up to date
+
+    [8] texdoc at http://fmwww.bc.edu/repec/bocode/t:
+        installed package is up to date
+
+    [9] erepost at http://fmwww.bc.edu/repec/bocode/e:
+        installed package is up to date
+
+   [10] cowsay at
+        https://raw.githubusercontent.com/mdroste/stata-cowsay/master:
+        installed package is up to date
+
+   [11] ftools at
+        https://raw.githubusercontent.com/sergiocorreia/ftools/master/src:
+        installed package is up to date
+
+   [12] reghdfe at
+        https://raw.githubusercontent.com/sergiocorreia/reghdfe/master/src:
+        installed package is up to date
+
+   [13] ivreghdfe at
+        https://raw.githubusercontent.com/sergiocorreia/ivreghdfe/master/src:
+        installed package is up to date
+
+   [14] ppmlhdfe at
+        https://raw.githubusercontent.com/sergiocorreia/ppmlhdfe/master/src:
+        installed package is up to date
+
+(no packages require updating)
+
+. 

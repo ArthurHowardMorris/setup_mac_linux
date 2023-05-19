@@ -64,6 +64,7 @@ fi
 # set the git config
 git config --global user.email  "53531149+ArthurHowardMorris@users.noreply.github.com"
 git config --global user.name "ArthurHowardMorris"
+git config --global pull.rebase false
 
 ## Step 6 use conda to set up the anaconda stack (at py 11 now)
 # conda init "$(basename "$SHELL")"
