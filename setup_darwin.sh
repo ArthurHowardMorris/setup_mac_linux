@@ -68,6 +68,14 @@ git config --global user.name "ArthurHowardMorris"
 ## Step 6 use conda to set up the anaconda stack (at py 11 now)
 # conda init "$(basename "$SHELL")"
 conda init zsh
+
+## Step 7 set up nvchad (set an option for this, and later add in some configs for dotfiles, maybe set this up on it's own repo
+# first uninstall anything that will get in the way
+rm -rf ~/.config/nvim
+rm -rf ~/.local/share/nvim
+# then pull in the nvchad
+git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1 && nvim
+
 echo "****************************************"
 echo "* reloading zsh so we can use conda    *"
 echo "* now check the install to this point  *"
